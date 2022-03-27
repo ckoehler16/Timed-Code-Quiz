@@ -1,8 +1,8 @@
 var viewHighscoresEl = document.querySelector(".view-highscores");
 var timerEl = document.querySelector(".timer");
 var infoBoxEl = document.querySelector(".info-box");
-var startTitleEl = document.querySelector(".start-title");
-var startInfoEl = document.querySelector(".start-info");
+var startTitleEl = document.querySelector(".info-title");
+var startInfoEl = document.querySelector(".info-text");
 var startBtnEl = document.querySelector(".start-btn");
 var quizBoxEl = document.querySelector("quiz-box");
 var quizTextEl = document.querySelector(".quiz-text");
@@ -74,6 +74,7 @@ function startTimer() {
             clearInterval(counter);
         }
     }, 1000);
+    startBtnEl.classList.add("hide");
 }
 function start() {
     document.getElementById("count").style="color:blue;";
