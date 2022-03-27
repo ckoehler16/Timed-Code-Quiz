@@ -1,7 +1,7 @@
 # Timed-Code-Quiz
 
 ## Purpose
-* To generate a timed quiz that asks a few questions to test a potential web developer's knowledge of JavaScript.
+* To generate a timed quiz that asks a few questions to test a potential web developer's knowledge of JavaScript and stores the high scores in order to compare with others who have taken the quiz.
 
 ## Requirements
 * Landing page with a start button that when one clicks the "start" button the timer starts and the first multiple choice question appears.

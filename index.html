@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Timed JavaScript Quiz</title>
+        <link rel="stylesheet" href="/Users/courtneykoehler/Desktop/Timed-Code-Quiz/assets/style.css" />
+    </head>
+    <body>
+        <header>
+            <!-- View Highscores (left side) -->
+            <h3 class="view-highscores">View Highscores</h3>
+            <!-- Timer (right)-->
+            <p class="timer">Timer:
+                <span id="count">60</span> seconds
+            </p>
+        </header>
+        <!-- This div is the box the quiz questions sit it -->
+        <div class="info-box">
+            <div class="start-box">
+                <h2 class="start-title">Timed JavaScript Quiz</h2>
+                <p class="start-info">This is quick 5 question quiz to test your basic knowledge of JavaScript.<br> You will have one minute to complete the quiz.<br> If you get answer right you will earn 10 points.<br> If you get the answer wrong you will receive 0 points and 10 seconds will be deducted from the timer<br> The highest score you can receive is 50 points.<br> Please click the start button when you are ready to begin the quiz.<br> Goodluck!</p>
+            </div>
+            <div class="start">
+                <button class="start-btn" onclick="start()">Start Quiz</button>
+            </div>
+        </div>
+        <div class="quiz-box">
+            <div class="ques-text">
+                <!-- will insert questions from javascript -->
+            </div>
+            <div class="ans-options">
+                <!-- will insert answer options from javascript -->
+            </div>
+
+        </div>
+        <script src="/Users/courtneykoehler/Desktop/Timed-Code-Quiz/js/script.js"></script>
+    </body>
+</html>
