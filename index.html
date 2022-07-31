@@ -1,60 +1,104 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Timed JavaScript Quiz</title>
-        <link rel="stylesheet" href="/Users/courtneykoehler/Desktop/Timed-Code-Quiz/assets/style.css" />
-    </head>
-    <body>
-        <header>
-            <!-- View Highscores (left side) -->
-            <h3 class="view-highscores">View Highscores</h3>
-            <!-- Timer (right)-->
-            <p class="timer">Timer:
-                <span id="count">60</span> seconds
-            </p>
-        </header>
-        <!-- This div is the box the quiz rules sit in -->
-        <div class="info-box">
-            <h2 class="info-title">Timed JavaScript Quiz</h2>
-            <p class="info-text">This is quick 5 question quiz to test your basic knowledge of JavaScript.<br> You will have one minute to complete the quiz.<br> If you get answer right you will earn 10 points.<br> If you get the answer wrong you will receive 0 points and 10 seconds will be deducted from the timer<br> The highest score you can receive is 50 points.<br> Please click the start button when you are ready to begin the quiz.<br> Goodluck!</p>
-            <div class="start">
-                <button class="start-btn" onclick="start()">Start Quiz</button>
-            </div>
-        </div>
-        <div class="quiz-box">
-            <div class="ques-text">
-                <!-- will insert questions from javascript -->
-            </div>
-            <div class="ans-options">
-                <!-- will insert answer options from javascript -->
-            </div>
-        </div>
-        <div class="result-box">
-            <div class="complet-text">Congrats! You have completed the quiz.</div>
-            <div class="score-text">
-                <!-- score will be inserted from javascript -->
-            </div>
-            <div class="initials-form">
-                <form class="hs-form">
-                    <label for="initials">Enter Initials</label><br>
-                    <input type="text" id="initials" name="initials" value="">
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
-        </div>
-        <div class="highscores">
-            <ol class="scores-list">
-                <li class="individual-score"></li>
-            </ol>
-            <div class="end-options">
-                <button class="go-back-btn">Go Back</button>
-                <button class="clear-history">Clear Highscores</button>
-            </div>
-        </div>
 
-        <script src="/Users/courtneykoehler/Desktop/Timed-Code-Quiz/js/script.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Timed JavaScript Quiz</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+</head>
+
+<body onload="pageLoad()">
+    <!-- Directions for the quiz and the start button. -->
+    <header>
+        <h1 class="quiz-title">Timed JavaScript Quiz</h1>
+        <p id="start" class="quiz-info">This is a quick 5 question quiz to test your basic knowledge of JavaScript. You
+            will have one minute to complete the quiz. If you get an answer right you will have 5 seconds added to your
+            time. If you answer incorrectly 5 seconds will be subtracted from your time. Please click the start button
+            when you are ready to begin the quiz. Good Luck!
+        </p>
+        <button id="start-quiz" class="start-btn" onclick="countdownTimer()">Start Quiz</button>
+        <div class="timer">
+            <h1 id="countdown"></h1>
+        </div>
+    </header>
+
+    <!-- Quiz Questions -->
+    <div id="question1" class="quiz-box">
+        <section class="ques-wrapper"></section>
+        <h2 id="ques-text" class="question">Which of the following is not a data type supported by JavaScript?</h2>
+        <ul>
+            <li id="a" class="answer" onclick="aAnswer(); wrongAnswer1()">Number</li>
+            <li id="b" class="answer" onclick="bAnswer(); wrongAnswer1()">String</li>
+            <li id="c" class="answer" onclick="cAnswer(); rightAnswer1()">Event</li>
+            <li id="d" class="answer" onclick="dAnswer(); wrongAnswer1()">Object</li>
+        </ul>
+        </section>
+    </div>
+    <div id="question2" class="quiz-box">
+        <section class="ques-wrapper"></section>
+        <h2 id="ques-text" class="question">Which type of variable is able to be used everywhere in your JavaScript
+            code?</h2>
+        <ul>
+            <li id="a" class="answer" onclick="aAnswer(); rightAnswer2()">Global Variable</li>
+            <li id="b" class="answer" onclick="bAnswer(); wrongAnswer2()">Local Variable</li>
+            <li id="c" class="answer" onclick="cAnswer(); wrongAnswer2()">Both</li>
+            <li id="d" class="answer" onclick="dAnswer(); wrongAnswer2()">None of the Above</li>
+        </ul>
+        </section>
+    </div>
+    <div id="question3" class="quiz-box">
+        <section class="ques-wrapper"></section>
+        <h2 id="ques-text" class="question">Which built-in method returns the length of a string?</h2>
+        <ul>
+            <li id="a" class="answer" onclick="aAnswer(); wrongAnswer3()">six()</li>
+            <li id="b" class="answer" onclick="bAnswer(); wrongAnswer3()">amount()</li>
+            <li id="c" class="answer" onclick="cAnswer(); wrongAnswer3()">index()</li>
+            <li id="d" class="answer" onclick="dAnswer(); rightAnswer3()">length()</li>
+        </ul>
+        </section>
+    </div>
+    <div id="question4" class="quiz-box">
+        <section class="ques-wrapper"></section>
+        <h2 id="ques-text" class="question">Which of the following code snipets creates and object?</h2>
+        <ul>
+            <li id="a" class="answer" onclick="aAnswer(); wrongAnswer4()">var book = Object();</li>
+            <li id="b" class="answer" onclick="bAnswer(); rightAnswer4()">var book = new Object();</li>
+            <li id="c" class="answer" onclick="cAnswer(); wrongAnswer4()">var book = new OBJECT;</li>
+            <li id="d" class="answer" onclick="dAnswer(); wrongAnswer4()">var book = Book();</li>
+        </ul>
+        </section>
+    </div>
+    <div id="question5" class="quiz-box">
+        <section class="ques-wrapper"></section>
+        <h2 id="ques-text" class="question">Which of the following digits represents the first element in an array?</h2>
+        <ul>
+            <li id="a" class="answer" onclick="aAnswer(); wrongAnswer5()">-1</li>
+            <li id="b" class="answer" onclick="bAnswer(); wrongAnswer5()">i</li>
+            <li id="c" class="answer" onclick="cAnswer(); wrongAnswer5()">1</li>
+            <li id="d" class="answer" onclick="dAnswer(); rightAnswer5()">0</li>
+        </ul>
+        </section>
+    </div>
+    <!-- Submit name to show score. -->
+    <div id="name-form">
+        <form id="name-blank">
+            <div class="form-group">
+                <input id="name" type="text" name="player-name" placeholder="Enter Your Name" />
+            </div>
+            <div>
+                <button class="name-btn" id="saveName" type="submit">Sumbit Name</button>
+            </div>
+        </form>
+        <!-- show score -->
+        <div>
+            <ul class="score-results" id="score-list">
+                <li class="top-scores"></li>
+            </ul>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+
 </html>
