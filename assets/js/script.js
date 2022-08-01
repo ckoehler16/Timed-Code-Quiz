@@ -1,8 +1,7 @@
-// Stores the answer choices in an array
 var timerEl = document.getElementById('countdown');
 var timeLeft = 60;
 var timerInterval;
-var choices = [];
+var leaderBoard = [];
 
 var answerA = document.getElementById('a');
 var answerB = document.getElementById('b');
@@ -12,7 +11,21 @@ var startQuiz = document.getElementById('start-quiz');
 var quizDirections = document.getElementById('start');
 var scoreName = document.querySelector('#name-form');
 var submitName = document.querySelector('#save-name');
+var scoreListEl = document.querySelector('#score-list');
+var formEl = document.getElementById('name-blank');
 
+// When loading the page hide everything except directions and start button
+function pageLoad() {
+    startQuiz.style.display = 'block';
+    question1.style.display = 'none';
+    question2.style.display = 'none';
+    question3.style.display = 'none';
+    question4.style.display = 'none';
+    question5.style.display = 'none';
+    scoreName.style.display = 'none';
+    submitName.style.display = 'none';
+    quizDirections.style.display = 'block';
+}
 
 // Timer function that counts down from 60 seconds
 function countdown() {
@@ -34,14 +47,38 @@ function countdown() {
         }
         else {
             // If the timeLeft is 0, the timer must stop and the quiz must be ended
-            timerEl.textContent = 'Time is up!';
-            clearInterval(timerInterval);
+            finalScore();
         }
     }, 1000);
 }
 
-// Functions that display the quiz questions
+// When an answer is clicked the color of the answer is changed
+function aAnswer() {
+    answerA.style.backgroundColor = '#5b71d6';
+    answerB.style.backgroundColor = '#253995';
+    answerC.style.backgroundColor = '#253995';
+    answerD.style.backgroundColor = '#253995';
+}
+function bAnswer() {
+    answerA.style.backgroundColor = '#253995';
+    answerB.style.backgroundColor = '#5b71d6';
+    answerC.style.backgroundColor = '#253995';
+    answerD.style.backgroundColor = '#253995';
+}
+function cAnswer() {
+    answerA.style.backgroundColor = '#253995';
+    answerB.style.backgroundColor = '#253995';
+    answerC.style.backgroundColor = '#5b71d6';
+    answerD.style.backgroundColor = '#253995';
+}
+function dAnswer() {
+    answerA.style.backgroundColor = '#253995';
+    answerB.style.backgroundColor = '#253995';
+    answerC.style.backgroundColor = '#253995';
+    answerD.style.backgroundColor = '#5b71d6';
+}
 
+// Functions that display the quiz questions
 // Make first question appear
 function questionOne() {
     startQuiz.style.display = 'none';
@@ -137,3 +174,61 @@ function finalScore() {
     clearInterval(timerInterval);
     loadScores();
 }
+
+// Create a list of scores
+var scoreList = function(event) {
+    event.preventDefault();
+    var name = document.getElementById('name').value;
+    console.log(name);
+
+    // catch for if the name is empty, give alert
+    if (!name) {
+        alert('Please enter your name');
+        return;
+    }
+
+    // create a new list item with the name and score
+    var scoreDataObj = {
+        name: name,
+        score: timeLeft
+    };
+    console.log(scoreDataObj);
+    createListEl(scoreDataObj);
+
+    // Put the scores in local storage
+    leaderBoard.push(scoreDataObj);
+    localStorage.setItem('leaderBoard', JSON.stringify(leaderBoard));
+}
+
+var createListEl = function(scoreDataObj) {
+    var highScoreEl = document.createElement('li');
+    highScoreEl.className = 'score-results';
+    scoreListEl.appendChild(highScoreEl);
+    highScoreEl.innerHTML = scoreDataObj.name + "'s score: " + scoreDataObj.score;
+};
+
+var loadScores = function() {
+    // First empty the score list to prevent duplicates
+    scoreListEl.innerHTML = '';
+
+    // Put the scores in local storage/array
+    leaderBoard = JSON.parse(localStorage.getItem('leaderBoard')) || [];
+
+    // If there are no scores set the leaderBoard to an empty array
+    if (!leaderBoard) {
+        console.log('No scores yet');
+        return false;
+    }
+    else {
+        console.log('Saved scores found');
+
+        // Load scores onto the page
+        for (var i = 0; i < leaderBoard.length; i++) {
+            createListEl(leaderBoard[i]);
+        }
+    }
+
+};
+
+// When the submit button is clicked the name and score are added to the list
+formEl.addEventListener('submit', scoreList);
