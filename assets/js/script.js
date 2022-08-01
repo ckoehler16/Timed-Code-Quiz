@@ -54,28 +54,28 @@ function countdown() {
 
 // When an answer is clicked the color of the answer is changed
 function aAnswer() {
-    answerA.style.backgroundColor = '#5b71d6';
-    answerB.style.backgroundColor = '#253995';
-    answerC.style.backgroundColor = '#253995';
-    answerD.style.backgroundColor = '#253995';
+    answerA.style.backgroundColor = '#b2bdef';
+    answerB.style.backgroundColor = '#5b71d6;';
+    answerC.style.backgroundColor = '#5b71d6;';
+    answerD.style.backgroundColor = '#5b71d6;';
 }
 function bAnswer() {
-    answerA.style.backgroundColor = '#253995';
-    answerB.style.backgroundColor = '#5b71d6';
-    answerC.style.backgroundColor = '#253995';
-    answerD.style.backgroundColor = '#253995';
+    answerA.style.backgroundColor = '#5b71d6;';
+    answerB.style.backgroundColor = '#b2bdef';
+    answerC.style.backgroundColor = '#5b71d6;';
+    answerD.style.backgroundColor = '#5b71d6;';
 }
 function cAnswer() {
-    answerA.style.backgroundColor = '#253995';
-    answerB.style.backgroundColor = '#253995';
-    answerC.style.backgroundColor = '#5b71d6';
-    answerD.style.backgroundColor = '#253995';
+    answerA.style.backgroundColor = '#5b71d6;';
+    answerB.style.backgroundColor = '#5b71d6;';
+    answerC.style.backgroundColor = '#b2bdef';
+    answerD.style.backgroundColor = '#5b71d6;';
 }
 function dAnswer() {
-    answerA.style.backgroundColor = '#253995';
-    answerB.style.backgroundColor = '#253995';
-    answerC.style.backgroundColor = '#253995';
-    answerD.style.backgroundColor = '#5b71d6';
+    answerA.style.backgroundColor = '#5b71d6;';
+    answerB.style.backgroundColor = '#5b71d6;';
+    answerC.style.backgroundColor = '#5b71d6;';
+    answerD.style.backgroundColor = '#b2bdef';
 }
 
 // Functions that display the quiz questions
@@ -202,7 +202,7 @@ var scoreList = function(event) {
 
 var createListEl = function(scoreDataObj) {
     var highScoreEl = document.createElement('li');
-    highScoreEl.className = 'score-results';
+    highScoreEl.className = 'high-scores';
     scoreListEl.appendChild(highScoreEl);
     highScoreEl.innerHTML = scoreDataObj.name + "'s score: " + scoreDataObj.score;
 };
@@ -227,8 +227,8 @@ var loadScores = function() {
             createListEl(leaderBoard[i]);
         }
     }
-
 };
 
 // When the submit button is clicked the name and score are added to the list
 formEl.addEventListener('submit', scoreList);
+

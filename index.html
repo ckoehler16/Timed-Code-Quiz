@@ -18,7 +18,7 @@
             time. If you answer incorrectly 5 seconds will be subtracted from your time. Please click the start button
             when you are ready to begin the quiz. Good Luck!
         </p>
-        <button id="start-quiz" class="start-btn" onclick="countdown()">Start Quiz</button>
+        <button id="start-quiz" class="start-btn" onclick="countdown(); questionOne()">Start Quiz</button>
         <div class="timer">
             <h1 id="countdown"></h1>
         </div>
@@ -26,75 +26,66 @@
 
     <!-- Quiz Questions -->
     <div id="question1" class="quiz-box">
-        <section class="ques-wrapper"></section>
-        <h2 id="ques-text" class="question">Which of the following is not a data type supported by JavaScript?</h2>
-        <ul>
+        <h2 id="ques-text" class="question">1. Which of the following is not a data type supported by JavaScript?</h2>
+        <ul class="box">
             <li id="a" class="answer" onclick="aAnswer(); wrongAnswer1()">Number</li>
             <li id="b" class="answer" onclick="bAnswer(); wrongAnswer1()">String</li>
             <li id="c" class="answer" onclick="cAnswer(); rightAnswer1()">Event</li>
             <li id="d" class="answer" onclick="dAnswer(); wrongAnswer1()">Object</li>
         </ul>
-        </section>
     </div>
     <div id="question2" class="quiz-box">
-        <section class="ques-wrapper"></section>
-        <h2 id="ques-text" class="question">Which type of variable is able to be used everywhere in your JavaScript
+        <h2 id="ques-text" class="question">2. Which type of variable is able to be used everywhere in your JavaScript
             code?</h2>
-        <ul>
+        <ul class="box">
             <li id="a" class="answer" onclick="aAnswer(); rightAnswer2()">Global Variable</li>
             <li id="b" class="answer" onclick="bAnswer(); wrongAnswer2()">Local Variable</li>
             <li id="c" class="answer" onclick="cAnswer(); wrongAnswer2()">Both</li>
             <li id="d" class="answer" onclick="dAnswer(); wrongAnswer2()">None of the Above</li>
         </ul>
-        </section>
     </div>
     <div id="question3" class="quiz-box">
-        <section class="ques-wrapper"></section>
-        <h2 id="ques-text" class="question">Which built-in method returns the length of a string?</h2>
-        <ul>
+        <h2 id="ques-text" class="question">3. Which built-in method returns the length of a string?</h2>
+        <ul class="box">
             <li id="a" class="answer" onclick="aAnswer(); wrongAnswer3()">six()</li>
             <li id="b" class="answer" onclick="bAnswer(); wrongAnswer3()">amount()</li>
             <li id="c" class="answer" onclick="cAnswer(); wrongAnswer3()">index()</li>
             <li id="d" class="answer" onclick="dAnswer(); rightAnswer3()">length()</li>
         </ul>
-        </section>
     </div>
     <div id="question4" class="quiz-box">
-        <section class="ques-wrapper"></section>
-        <h2 id="ques-text" class="question">Which of the following code snipets creates and object?</h2>
-        <ul>
+        <h2 id="ques-text" class="question">4. Which of the following code snipets creates and object?</h2>
+        <ul class="box">
             <li id="a" class="answer" onclick="aAnswer(); wrongAnswer4()">var book = Object();</li>
             <li id="b" class="answer" onclick="bAnswer(); rightAnswer4()">var book = new Object();</li>
             <li id="c" class="answer" onclick="cAnswer(); wrongAnswer4()">var book = new OBJECT;</li>
             <li id="d" class="answer" onclick="dAnswer(); wrongAnswer4()">var book = Book();</li>
         </ul>
-        </section>
     </div>
     <div id="question5" class="quiz-box">
-        <section class="ques-wrapper"></section>
-        <h2 id="ques-text" class="question">Which of the following digits represents the first element in an array?</h2>
-        <ul>
+        <h2 id="ques-text" class="question">5. Which of the following digits represents the first element in an array?</h2>
+        <ul class="box">
             <li id="a" class="answer" onclick="aAnswer(); wrongAnswer5()">-1</li>
             <li id="b" class="answer" onclick="bAnswer(); wrongAnswer5()">i</li>
             <li id="c" class="answer" onclick="cAnswer(); wrongAnswer5()">1</li>
             <li id="d" class="answer" onclick="dAnswer(); rightAnswer5()">0</li>
         </ul>
-        </section>
     </div>
     <!-- Submit name to show score. -->
-    <div id="name-form">
+    <div id="name-form" class="name-scores">
         <form id="name-blank">
-            <div class="form-group">
+            <div class="form-section">
                 <input id="name" type="text" name="player-name" placeholder="Enter Your Name" />
             </div>
             <div>
-                <button class="name-btn" id="save-name" type="submit">Sumbit Name</button>
+                <button class="name-btn" id="save-name" type="submit">Submit Name</button>
             </div>
         </form>
         <!-- show score -->
         <div>
+            <h3>High Scores</h3>
             <ul class="score-results" id="score-list">
-                <li class="top-scores"></li>
+                <li class="high-scores"></li>
             </ul>
         </div>
     </div>
